@@ -2,9 +2,9 @@
 import tw from "twrnc";
 import { View, Text, StatusBar, Pressable, Button } from "react-native";
 import { ImageBackground } from "react-native";
-import fondo  from "../Imagenes/fondo1.jpg";
+import fondo from "../Imagenes/fondo1.jpg";
 import { TextInput } from "react-native";
-import {Link } from "react-router-native"
+import { Link } from "react-router-native"
 export default function LogIn() {
   return (
     <View style={tw`justify-center items-center`}>
@@ -14,19 +14,10 @@ export default function LogIn() {
         >
           <Text style={tw`text-white text-xl  py-5 `}>𝓛𝓸𝓰𝓲𝓷</Text>
           <Text style={tw`text-white text-xl  justify-start `}>𝓤𝓼𝓮𝓻𝓷𝓪𝓶𝓮</Text>
-          <TextInput
-            style={tw` bg-white rounded-lg w-8/10 h-1/9`}
-            value=""
-            placeholder=" 𝓤𝓼𝓮𝓻𝓷𝓪𝓶𝓮"
-          />
-          
+          <TextInput style={tw` bg-white rounded-lg w-8/10 h-1/9 text-center`} placeholder=" 𝓤𝓼𝓮𝓻𝓷𝓪𝓶𝓮" />
           <View style={tw`mt-0.9`}></View>
           <Text style={tw`text-white text-xl  justify-start `}>𝓟𝓪𝓼𝓼𝔀𝓸𝓻𝓭</Text>
-          <TextInput
-            style={tw` bg-white rounded-lg w-8/10 h-1/9`}
-            value=""
-            placeholder=" 𝓟𝓪𝓼𝓼𝔀𝓸𝓻𝓭"
-          />
+          <TextInput style={tw` bg-white rounded-lg w-8/10 h-1/9 text-center`} placeholder=" 𝓟𝓪𝓼𝓼𝔀𝓸𝓻𝓭" secureTextEntry={true} />
           <View style={tw`mt-5 justify-center items-center mb-5 `}>
             <Button
               style={tw` bg-blue-100 text-red-600 `}

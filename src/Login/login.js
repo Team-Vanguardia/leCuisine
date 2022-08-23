@@ -25,7 +25,8 @@ export default function LogIn() {
           <View style={tw`items-center`}>
             <Text style={tw`mt-55  text-gray-300 text-4xl `}> 𝓛𝓮 𝓒𝓸𝓾𝓲𝓼𝓲𝓷𝓮</Text>
           </View>
-          /**         </ImageBackground>
+          /**         
+          </ImageBackground>
            */
 
       </View>

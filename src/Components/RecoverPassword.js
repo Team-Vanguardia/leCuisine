@@ -20,7 +20,7 @@ export default function RecoverPassword() {
           <Button style={tw` bg-blue-100  `} title="Recuperar contraseña"/> 
         </View>
         <View style={tw`items-center`}>
-          <Text style={tw`mt-40  text-gray-300 text-4xl `}> 𝓛𝓮 𝓒𝓸𝓾𝓲𝓼𝓲𝓷𝓮</Text>
+          <Text style={tw`mt-38  text-gray-300 text-4xl `}> 𝓛𝓮 𝓒𝓸𝓾𝓲𝓼𝓲𝓷𝓮</Text>
         </View>
       </ImageBackground>
     </View>

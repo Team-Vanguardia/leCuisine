@@ -19,7 +19,7 @@ export default function LogIn() {
           <Text style={tw`text-white text-xl  justify-start `}>𝓟𝓪𝓼𝓼𝔀𝓸𝓻𝓭</Text>
           <TextInput style={tw` bg-white rounded-lg w-8/10 h-1/9 text-center`} placeholder=" 𝓟𝓪𝓼𝓼𝔀𝓸𝓻𝓭" secureTextEntry={true} />
           <View style={tw`mt-5 justify-center items-center mb-5 `}>
-            <Button style={tw` bg-blue-100 text-red-600 `} title="𝓢𝓲𝓰𝓷 𝓲𝓷 "/>.0
+            <Button style={tw` bg-blue-100 text-red-600 `} title="𝓢𝓲𝓰𝓷 𝓲𝓷 "/>
           </View>
         </View>
         <View style={tw`items-center`}>

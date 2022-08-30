@@ -2,8 +2,6 @@ import tw from "twrnc";
 import { View, Text, StatusBar, Pressable, Button } from "react-native";
 import { ImageBackground } from "react-native";
 import fondo from "./src/Imagenes/fondo1.jpg";
-import RecoverPassword from "./src/Components/RecoverPassword";
-import LoginPage from "./src/Components/Login";
 import CreateAccount from "./src/Components/CreateAccount";
 import LandingPage from "./src/Components/LandingPage";
 import { TextInput } from "react-native";

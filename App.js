@@ -9,11 +9,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NativeRouter, Route, Routes } from "react-router-native";
 import LogIn from "./src/Components/Login";
-
-
-
 const Stack = createNativeStackNavigator();
 export default function App() {
+
+
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -22,15 +22,5 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
 
-
   );
 }
-/*
-<NativeRouter>
-      <Routes>
-        <Route path="/" element={<CreateAccount/> } />
-        <Route path="/RecoverPassword" element={<RecoverPassword/> } />
-        <Route path="/LandingPage" element={<LandingPage/>} />
-      </Routes>
-    </NativeRouter>
-    */

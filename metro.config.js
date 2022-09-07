@@ -1,6 +1,8 @@
 const { getDefaultConfig } = require("@expo/metro-config");
 
 const defaultConfig = getDefaultConfig(__dirname);
+const defaultAssetExts = require('metro-config/src/defaults/defaults')
+  .assetExts;
 
 module.exports = {
     transformer: {
@@ -14,5 +16,6 @@ module.exports = {
     //added this
     resolver: {
       sourceExts: ['jsx', 'js', 'ts', 'tsx', 'cjs'],
+      assetExts: [...defaultAssetExts, 'ptl'],
     },
   };

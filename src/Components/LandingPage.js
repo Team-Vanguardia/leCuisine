@@ -13,7 +13,7 @@ import fondo from "../Imagenes/fondo1.jpg";
 import { useRef, useState } from "react";
 import { Camera, MobileModel } from "react-native-pytorch-core";
 
-const model = require('../Components/best_model_le_couisine.pth');
+const model = require('../Components/best_model_le_cousine.ptl');
 const classes = [   
   "Aguacate",
   "Arroz",

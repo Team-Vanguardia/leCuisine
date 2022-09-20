@@ -1,21 +1,12 @@
-import tw from "twrnc";
 import {
   View,
-  Text,
-  StatusBar,
-  Pressable,
-  Button,
-  ImageBackground,
-  SafeAreaView,
-  Image,
 } from "react-native";
-import fondo from "../Imagenes/fondo1.jpg";
-import {StyleSheet} from 'react-native'
-import { useRef, useState } from "react";
-import {Camera} from "react-native-pytorch-core";
-
+import { StyleSheet, TouchableOpacity, Text, Button } from 'react-native'
+import { useState } from "react";
+import { CameraType } from 'expo-camera';
+import {Camera, Image, MobileModel } from 'react-native-pytorch-core';
 const model = require('../Components/best_model_le_cousine.ptl');
-const classes = [   
+const classes = [
   "Aguacate",
   "Arroz",
   "Brocoli",
@@ -33,14 +24,40 @@ const classes = [
   "Uva",
   "Zanahoria",
 ];
-
 export default function LandingPage() {
-  const [classObj, setClassObj] = useState("");
+  const [classObj, setClassObj] = useState('');
+  /* const [type, setType] = useState(CameraType.back); */
+  const [permission, requestPermission] = Camera.useCameraPermissions();
+
+  if (!permission) {
+    // Camera permissions are still loading
+    return <View />;
+  }
+
+  if (!permission.granted) {
+    // Camera permissions are not granted yet
+    return (
+      <View style={styles.container}>
+        <Text style={{ textAlign: 'center' }}>
+          We need your permission to show the camera
+        </Text>
+        <Button onPress={requestPermission} title="grant permission" />
+      </View>
+    );
+  }
+
+  /* function toggleCameraType() {
+    setType((current) => (
+      current === CameraType.back ? CameraType.front : CameraType.back
+    ));
+  } */
+
 
   async function handleImage(image) {
     const predict = await MobileModel.execute(model, {
       image,
     });
+
 
     let topclass = classes[predict.result.maxIdx];
     setClassObj(topclass);
@@ -49,25 +66,44 @@ export default function LandingPage() {
   }
 
   return (
-    <View style={tw`justify-center items-center`}>
-      <View style={styles.container}>
-        <Camera style={styles.camera}/>
-      </View>
+    <View style={styles.container}>
+      {/* <Camera style={styles.camera} type={type}>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={toggleCameraType}>
+            <Text style={styles.text}>Flip Camera</Text>
+          </TouchableOpacity>
+        </View>
+      </Camera> */}
+      <Text>Image Classification: </Text>
+      <Camera style={styles.camera}  onFrame={handleImage} />
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    backgroundColor: "#ffff",
-    padding: 20,
-    alignItems: "center",
-  },
-  label: {
-    marginBottom: 10,
+    flex: 1,
+    justifyContent: 'center',
   },
   camera: {
-    flexGrow: 1,
-    width: "100%",
+    flex: 1,
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    margin: 64,
+  },
+  button: {
+    flex: 1,
+    alignSelf: 'flex-end',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
   },
 });
+

@@ -14,13 +14,13 @@ export default function LandingPage() {
   const ingredientes = ["lemon", "cucumber"];
   const [recetasUI, setrecetasUI] = useState([]);
   const [refresh, setRefresh] = useState(0);
-  let recetas = [];
+  let contadorIngredientes = 1;
   /*   if (!permission) {
     // Camera permissions are still loading
     return <View />;
   } */
-  function handleQuery() {
-    console.log("entra handle query");
+  const handleQuery = () => {
+    let recetas = [];
     const citiesRef = db.collection("Recetas");
     const query = citiesRef.where(
       "ingredientes",
@@ -34,24 +34,17 @@ export default function LandingPage() {
           descripcion: doc.data().descripcion,
           ingredientes: doc.data().ingredientes,
         };
+        /*       console.log(doc.id);*/
         recetas.push(ingreso);
-        console.log(recetas);
       });
     });
-  }
+    setrecetasUI(recetas);
+    console.log(recetasUI);
+  };
 
-  function main() {
-    console.log("entra main");
+  const verRecetas = () => {
     handleQuery();
-  }
-
-  main();
-
-  /* const verRecetas = () => {
-    handleQuery();
-    retornarComponenteRecetas();
-    setRefresh(refresh + 1);
-  }; */
+  };
 
   /*  useEffect(() => {
   console.log("Actualizo el componente")
@@ -62,7 +55,7 @@ export default function LandingPage() {
     <>
       <View>
         <View>
-          {recetas.map((item, id) => (
+          {recetasUI.map((item, id) => (
             <View
               style={tw`max-w-md py-4 px-8 bg-blue-100 shadow-lg rounded-lg my-50`}
             >
@@ -84,12 +77,24 @@ export default function LandingPage() {
                 <Text style={tw`mt-3 text-gray-600`}>{item.descripcion}</Text>
               </View>
               <View style={tw`flex justify-end mt-4`}>
-                <Text style={tw`text-xl font-medium text-indigo-500`}>
-                  Ver más
-                </Text>
+                {item.ingredientes.map((ing, id) =>(
+                  <Text style={tw`text-xl font-medium text-indigo-500`}>
+                    {(contadorIngredientes++) + ". " + ing}
+                  </Text>
+                ))}
               </View>
             </View>
           ))}
+        </View>
+        <View>
+          <Pressable
+            style={tw`w-30 h-10 bg-slate-900 text-black rounded-full self-center pt-2 mb-4`}
+            onPress={() => verRecetas()}
+          >
+            <Text style={tw` text-lg self-center text-white `}>
+              Ver Recetas
+            </Text>
+          </Pressable>
         </View>
       </View>
     </>

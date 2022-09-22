@@ -16,7 +16,25 @@ export default function firedb() {
     // Initialize Firebase
     const app = firebase.initializeApp(firebaseConfig);
     const db = app.firestore()
-    export {db}
+    return (
+        <View>
+          {/*<Camera style={styles.camera}>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={toggleCameraType}>
+                <Text style={styles.text}>Flip Camera</Text>
+              </TouchableOpacity>
+            </View>
+          </Camera>
+          <Text>Image Classification: </Text>
+          <Camera style={styles.camera}  onFrame={handleImage} />
+      */}
+          <Button
+            title="Probar base de datos "
+          />
+        </View>
+      );
 }
 
 

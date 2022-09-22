@@ -14,6 +14,7 @@ export default function LandingPage() {
     return <View />;
   } */
   const handleQuery = () => {
+    receta = []
     const citiesRef =  db.collection("Recetas");
     const query = citiesRef.where('ingredientes', 'array-contains-any', ingredientes);
     query.get().then(snap => {

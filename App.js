@@ -2,6 +2,7 @@ import LandingPage from "./src/Components/LandingPage";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LogIn from "./src/Components/Login";
+//import firedb from "./firebase_prueba";
 const Stack = createNativeStackNavigator();
 export default function App() {
 

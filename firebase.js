@@ -1,8 +1,10 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth"
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// Import the functions you need from the SDKs you need
+//import { initializeApp } from "firebase/compat/app";
+
+import firebase from "firebase";
+
+//import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/compat/auth"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -15,15 +17,17 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const app = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth(app);
+const db = app.firestore()
 
 export { auth }
+export { db }
 
 export function signup(email, password) {
-  return createUserWithEmailAndPassword(auth, email, password);
+  return firebase.auth().createUserWithEmailAndPassword(email, password);
 }
 
 export function signin(email, password) {
-  return signInWithEmailAndPassword(auth, email, password);
+  return firebase.auth().signInWithEmailAndPassword(email, password);
 }
